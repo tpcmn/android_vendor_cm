@@ -47,7 +47,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES +=  \
     vendor/cm/proprietary/Term.apk:system/app/Term.apk \
     vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm3.so:system/lib/libjackpal-androidterm3.so \
-    vendor/cm/prebuilt/common/bootanimation.zip:system/media/bootanimation.zip
+    vendor/lge/thunderc/prebuild/media/bootanimation.zip:system/media/bootanimation.zip \
+    vendor/lge/thunderc/prebuild/media/somebodys.ogg:system/media/audio/ringtones/somebodys.ogg
 
 # Bring in camera effects & videos
 #$(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
