@@ -6,8 +6,8 @@ include frameworks/base/data/sounds/AllAudio.mk
 
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=Playa.ogg \
-    ro.config.notification_sound=regulus.ogg \
+    ro.config.ringtone=somebodys.ogg \
+    ro.config.notification_sound=Heaven.ogg \
     ro.config.alarm_alert=Alarm_Beep_03.ogg
 
 PRODUCT_PACKAGES += \

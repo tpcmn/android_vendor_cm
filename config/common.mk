@@ -10,6 +10,12 @@ endif
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
+# Default ringtone
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ringtone=somebodys.ogg \
+    ro.config.notification_sound=Heaven.ogg \
+    ro.config.alarm_alert=Alarm_Beep_03.ogg
+
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
@@ -39,13 +45,12 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
 
 PRODUCT_COPY_FILES +=  \
-    vendor/cm/proprietary/RomManager.apk:system/app/RomManager.apk \
     vendor/cm/proprietary/Term.apk:system/app/Term.apk \
     vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm3.so:system/lib/libjackpal-androidterm3.so \
     vendor/cm/prebuilt/common/bootanimation.zip:system/media/bootanimation.zip
 
 # Bring in camera effects & videos
-$(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
+#$(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
 PRODUCT_COPY_FILES +=  \
     vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
     vendor/cm/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
@@ -61,7 +66,6 @@ PRODUCT_COPY_FILES += \
 # Required CM packages
 PRODUCT_PACKAGES += \
     Camera \
-    Development \
     LatinIME \
     SpareParts \
     Superuser \
@@ -70,21 +74,12 @@ PRODUCT_PACKAGES += \
 
 # Optional CM packages
 PRODUCT_PACKAGES += \
-    VideoEditor \
     VoiceDialer \
     Basic \
-    HoloSpiralWallpaper \
-    MagicSmokeWallpapers \
-    NoiseField \
-    Galaxy4 \
-    LiveWallpapers \
     LiveWallpapersPicker \
-    VisualizationWallpapers \
-    PhaseBeam
 
 # Custom CM packages
 PRODUCT_PACKAGES += \
-    Trebuchet \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf
@@ -111,7 +106,7 @@ else
                 ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)
         else
             PRODUCT_PROPERTY_OVERRIDES += \
-                ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-KANG
+                ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-BobZhome-$(shell date +%m%d%Y)
         endif
     endif
 endif
