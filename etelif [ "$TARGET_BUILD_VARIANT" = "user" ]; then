@@ -1,0 +1,217 @@
+[1mdiff --git a/config/common.mk b/config/common.mk[m
+[1mindex 84575fb..3f185f0 100644[m
+[1m--- a/config/common.mk[m
+[1m+++ b/config/common.mk[m
+[36m@@ -10,12 +10,6 @@[m [mendif[m
+ [m
+ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0[m
+ [m
+[31m-# Default ringtone[m
+[31m-PRODUCT_PROPERTY_OVERRIDES += \[m
+[31m-    ro.config.ringtone=somebodys.ogg \[m
+[31m-    ro.config.notification_sound=Heaven.ogg \[m
+[31m-    ro.config.alarm_alert=Alarm_Beep_03.ogg[m
+[31m-[m
+ PRODUCT_PROPERTY_OVERRIDES += \[m
+     keyguard.no_require_sim=true \[m
+     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \[m
+[36m@@ -47,14 +41,13 @@[m [mPRODUCT_COPY_FILES += \[m
+ PRODUCT_COPY_FILES +=  \[m
+     vendor/cm/proprietary/Term.apk:system/app/Term.apk \[m
+     vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm3.so:system/lib/libjackpal-androidterm3.so \[m
+[31m-    vendor/lge/thunderc/prebuild/media/bootanimation.zip:system/media/bootanimation.zip \[m
+[31m-    vendor/lge/thunderc/prebuild/media/somebodys.ogg:system/media/audio/ringtones/somebodys.ogg[m
+[32m+[m[32m#    vendor/cm/prebuilt/common/bootanimation.zip:system/media/bootanimation.zip[m
+ [m
+ # Bring in camera effects & videos[m
+ #$(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)[m
+[31m-PRODUCT_COPY_FILES +=  \[m
+[31m-    vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \[m
+[31m-    vendor/cm/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd[m
+[32m+[m[32m#PRODUCT_COPY_FILES +=  \[m
+[32m+[m[32m#    vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \[m
+[32m+[m[32m#    vendor/cm/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd[m
+ [m
+ # Enable SIP+VoIP on all targets[m
+ PRODUCT_COPY_FILES += \[m
+[36m@@ -67,6 +60,7 @@[m [mPRODUCT_COPY_FILES += \[m
+ # Required CM packages[m
+ PRODUCT_PACKAGES += \[m
+     Camera \[m
+[32m+[m[32m    Development \[m
+     LatinIME \[m
+     SpareParts \[m
+     Superuser \[m
+[36m@@ -78,9 +72,18 @@[m [mPRODUCT_PACKAGES += \[m
+     VoiceDialer \[m
+     Basic \[m
+     LiveWallpapersPicker \[m
+[31m-[m
+[32m+[m[32m    VisualizationWallpapers \[m
+[32m+[m[32m#    HoloSpiralWallpaper \[m
+[32m+[m[32m#    MagicSmokeWallpapers \[m
+[32m+[m[32m#    NoiseField \[m
+[32m+[m[32m#    Galaxy4 \[m
+[32m+[m[32m#    LiveWallpapers \[m
+[32m+[m[32m#    PhaseBeam \[m
+[32m+[m[32m#     VideoEditor \[m
+ # Custom CM packages[m
+ PRODUCT_PACKAGES += \[m
+[32m+[m[32m    Trebuchet \[m
+[32m+[m[32m    CMStats \[m
+     DSPManager \[m
+     libcyanogen-dsp \[m
+     audio_effects.conf[m
+[36m@@ -98,17 +101,12 @@[m [mifdef CM_NIGHTLY[m
+     PRODUCT_PROPERTY_OVERRIDES += \[m
+         ro.cm.version=$(PRODUCT_VERSION_MAJOR)-$(shell date +%m%d%Y)-NIGHTLY-$(PRODUCT_RELEASE_NAME)[m
+ else[m
+[31m-    ifdef CM_SNAPSHOT[m
+[32m+[m[32m    ifdef CM_RELEASE[m
+         PRODUCT_PROPERTY_OVERRIDES += \[m
+[31m-            ro.cm.version=$(PRODUCT_VERSION_MAJOR)-$(shell date +%m%d%Y)-SNAPSHOT-$(PRODUCT_RELEASE_NAME)$(CM_EXTRAVERSION)[m
+[32m+[m[32m            ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)[m
+     else[m
+[31m-        ifdef CM_RELEASE[m
+[31m-            PRODUCT_PROPERTY_OVERRIDES += \[m
+[31m-                ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)[m
+[31m-        else[m
+[31m-            PRODUCT_PROPERTY_OVERRIDES += \[m
+[31m-                ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-BobZhome-$(shell date +%m%d%Y)[m
+[31m-        endif[m
+[32m+[m[32m        PRODUCT_PROPERTY_OVERRIDES += \[m
+[32m+[m[32m            ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-KANG[m
+     endif[m
+ endif[m
+ [m
+[1mdiff --git a/config/common_full_phone.mk b/config/common_full_phone.mk[m
+[1mindex 3fa7ee0..a7f758d 100644[m
+[1m--- a/config/common_full_phone.mk[m
+[1m+++ b/config/common_full_phone.mk[m
+[36m@@ -6,8 +6,8 @@[m [minclude frameworks/base/data/sounds/AllAudio.mk[m
+ [m
+ # Default ringtone[m
+ PRODUCT_PROPERTY_OVERRIDES += \[m
+[31m-    ro.config.ringtone=somebodys.ogg \[m
+[31m-    ro.config.notification_sound=Heaven.ogg \[m
+[32m+[m[32m    ro.config.ringtone=Playa.ogg \[m
+[32m+[m[32m    ro.config.notification_sound=regulus.ogg \[m
+     ro.config.alarm_alert=Alarm_Beep_03.ogg[m
+ [m
+ PRODUCT_PACKAGES += \[m
+[1mdiff --git a/prebuilt/Term.apk b/prebuilt/Term.apk[m
+[1mnew file mode 100644[m
+[1mindex 0000000..82f04b9[m
+Binary files /dev/null and b/prebuilt/Term.apk differ
+[1mdiff --git a/prebuilt/common/bin/backuptool.sh b/prebuilt/common/bin/backuptool.sh[m
+[1mindex a702d37..72be427 100755[m
+[1m--- a/prebuilt/common/bin/backuptool.sh[m
+[1m+++ b/prebuilt/common/bin/backuptool.sh[m
+[36m@@ -128,15 +128,13 @@[m [mbackup_file() {[m
+       fi[m
+       [m
+       local F=`basename $1`[m
+[31m-      local D=`dirname $1`[m
+       [m
+       # dont backup any apps that have odex files, they are useless[m
+       if ( echo $F | grep -q "\.apk$" ) && [ -e `echo $1 | sed -e 's/\.apk$/\.odex/'` ];[m
+       then[m
+          echo "Skipping odexed apk $1";[m
+       else[m
+[31m-         mkdir -p $C/bak/$D[m
+[31m-         cp -p $1 $C/bak/$D/$F[m
+[32m+[m[32m         cp -p $1 $C/$F[m
+       fi[m
+    fi[m
+ }[m
+[36m@@ -144,13 +142,13 @@[m [mbackup_file() {[m
+ restore_file() {[m
+    local FILE=`basename $1`[m
+    local DIR=`dirname $1`[m
+[31m-   if [ -e "$C/bak/$DIR/$FILE" ];[m
+[32m+[m[32m   if [ -e "$C/$FILE" ];[m
+    then[m
+       if [ ! -d "$DIR" ];[m
+       then[m
+          mkdir -p $DIR;[m
+       fi[m
+[31m-      cp -p $C/bak/$DIR/$FILE $1;[m
+[32m+[m[32m      cp -p $C/$FILE $1;[m
+       if [ -n "$2" ];[m
+       then[m
+          rm $2;[m
+[1mdiff --git a/prebuilt/common/bootanimation.zip b/prebuilt/common/bootanimation.zip[m
+[1mindex 0e600c6..528e840 100644[m
+Binary files a/prebuilt/common/bootanimation.zip and b/prebuilt/common/bootanimation.zip differ
+[1mdiff --git a/prebuilt/common/etc/apns-conf.xml b/prebuilt/common/etc/apns-conf.xml[m
+[1mindex 9eb3cd4..b8ef606 100644[m
+[1m--- a/prebuilt/common/etc/apns-conf.xml[m
+[1m+++ b/prebuilt/common/etc/apns-conf.xml[m
+[36m@@ -995,11 +995,11 @@[m
+   <apn carrier="du" mcc="424" mnc="03" apn="du" mmsc="http://mms.du.ae" mmsproxy="10.19.18.4" mmsport="9201" type="default,supl,mms" />[m
+   <apn carrier="Tesco UK" mcc="425" mnc="01" apn="prepay.tesco-mobile.com" user="tescowap" password="password" server="http://wap.tesco-mobile.com/" proxy="193.113.200.195" port="9201" type="default,supl,mms" />[m
+   <apn carrier="Orange IL" mcc="425" mnc="01" apn="uinternet" user="orange" password="orange" type="default,supl" />[m
+[31m-  <apn carrier="Orange IL" mcc="425" mnc="01" apn="wap.orange.co.il" user="" password="" proxy="192.118.11.55" mmsc="http://192.168.220.15/servlets/mms" type="mms" />[m
+[32m+[m[32m  <apn carrier="Orange IL" mcc="425" mnc="01" apn="wap.orange.co.il" user="orange" password="mobile54" proxy="192.118.11.55" mmsc="http://192.168.220.15/servlets/mms" type="mms" />[m
+   <apn carrier="CellCOM" mcc="425" mnc="02" apn="internetg" type="default,supl" />[m
+[31m-  <apn carrier="CellCOM MMS" mcc="425" mnc="02" apn="mms" user="" password="" mmsc="http://mms.cellcom.co.il" mmsproxy="172.31.29.38" mmsport="8080" type="mms" />[m
+[32m+[m[32m  <apn carrier="CellCOM MMS" mcc="425" mnc="02" apn="mms" user="Cellcom" password="HyD43f" mmsc="http://mms.cellcom.co.il" mmsproxy="212.150.203.37" mmsport="9201" type="mms" />[m
+   <apn carrier="Pelephone" mcc="425" mnc="03" apn="internet.pelephone.net.il" user="pcl@3g" password="pcl" type="default,supl" />[m
+[31m-  <apn carrier="Pelephone MMS" mcc="425" mnc="03" apn="mms.pelephone.net.il" user="pcl@3g" password="pcl" server="pelephone" mmsc="http://mmsu.pelephone.net.il" mmsproxy="10.170.9.54" mmsport="9093" type="mms" />[m
+[32m+[m[32m  <apn carrier="Pelephone MMS" mcc="425" mnc="03" apn="internet.pelephone.net.il" user="pcl@3g" password="pcl" server="pelephone" mmsc="http://mmsu.pelephone.net.il" mmsproxy="10.170.9.54" mmsport="9093" type="mms" />[m
+   <apn carrier="Pelephone Internet Static" mcc="425" mnc="03" apn="org.pelephone.net.il" user="pcl@rsingle" password="pcl" type="default,supl" />[m
+   <apn carrier="BATELCO BH" mcc="426" mnc="01" apn="internet.batelco.com" user="internet" password="internet" type="default,supl" />[m
+   <apn carrier="BATELCO BH MMS" mcc="426" mnc="01" apn="mms.batelco.com" user="mms" password="mms" mmsc="http://192.168.36.10/servlets/mms" mmsproxy="192.168.1.2" mmsport="9201" type="mms" />[m
+[1mdiff --git a/proprietary/RomManager.apk b/proprietary/RomManager.apk[m
+[1mindex feaf5da..c3abcf1 100644[m
+Binary files a/proprietary/RomManager.apk and b/proprietary/RomManager.apk differ
+[1mdiff --git a/tools/opticharger b/tools/opticharger[m
+[1mindex c8c86f5..8e63bf9 100755[m
+[1m--- a/tools/opticharger[m
+[1m+++ b/tools/opticharger[m
+[36m@@ -32,6 +32,8 @@[m [mif [ "$APKCERTS" = "" ];[m
+ then[m
+     if [ "$TARGET_BUILD_VARIANT" = "userdebug" ]; then[m
+        TARGET_BUILD_VARIANT="eng"[m
+[32m+[m[32m    elif [ "$TARGET_BUILD_VARIANT" = "user" ]; then[m
+[32m+[m[32m       TARGET_BUILD_VARIANT="eng"[m
+     fi[m
+ [m
+     APKCERTS=$OUT/obj/PACKAGING/target_files_intermediates/$TARGET_PRODUCT-target_files-$TARGET_BUILD_VARIANT.$USER/META/apkcerts.txt[m
+[1mdiff --git a/tools/squisher b/tools/squisher[m
+[1mindex cbd154f..edc5828 100755[m
+[1m--- a/tools/squisher[m
+[1m+++ b/tools/squisher[m
+[36m@@ -1,9 +1,11 @@[m
+[31m-#!/bin/sh[m
+[32m+[m[32m#!/bin/sh -x[m
+ #[m
+ # Squish a CM otapackage for distribution[m
+ # cyanogen[m
+ #[m
+ [m
+[32m+[m[32mset[m
+[32m+[m
+ OUT_TARGET_HOST=`uname -a | grep Darwin`[m
+ if [ -z "$OUT_TARGET_HOST" ][m
+ then[m
+[36m@@ -27,6 +29,8 @@[m [mif [ "$TARGET_BUILD_TYPE" = "debug" ]; then[m
+     OTAPACKAGE=$OUT/${TARGET_PRODUCT}_debug-ota-$TARGET_BUILD_VARIANT.$USER.zip[m
+ elif [ "$TARGET_BUILD_VARIANT" = "userdebug" ]; then[m
+     OTAPACKAGE=$OUT/$TARGET_PRODUCT-ota-eng.$USER.zip[m
+[32m+[m[32melif [ "$TARGET_BUILD_VARIANT" = "user" ]; then[m
+[32m+[m[32m    OTAPACKAGE=$OUT/$TARGET_PRODUCT-ota-eng.$USER.zip[m
+ else[m
+     OTAPACKAGE=$OUT/$TARGET_PRODUCT-ota-$TARGET_BUILD_VARIANT.$USER.zip[m
+ fi[m
+[1mdiff --git a/vendorsetup.sh b/vendorsetup.sh[m
+[1mindex b97f9fd..bffe60a 100644[m
+[1m--- a/vendorsetup.sh[m
+[1m+++ b/vendorsetup.sh[m
+[36m@@ -1,6 +1,5 @@[m
+ add_lunch_combo cm_crespo-userdebug[m
+ add_lunch_combo cm_crespo4g-userdebug[m
+[31m-add_lunch_combo cm_epicmtd-userdebug[m
+ add_lunch_combo cm_maguro-userdebug[m
+ add_lunch_combo cm_thunderc-userdebug[m
+ add_lunch_combo cm_p4tmo-userdebug[m
