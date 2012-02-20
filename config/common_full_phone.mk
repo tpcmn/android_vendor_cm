@@ -6,7 +6,7 @@ include frameworks/base/data/sounds/AllAudio.mk
 
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=somebodys.ogg \
+    ro.config.ringtone=Ring_Synth_04.ogg
     ro.config.notification_sound=Heaven.ogg \
     ro.config.alarm_alert=Alarm_Beep_03.ogg
 

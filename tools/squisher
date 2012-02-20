@@ -1,4 +1,4 @@
-#!/bin/sh -X
+#!/bin/sh -x
 #
 # Squish a CM otapackage for distribution
 # cyanogen

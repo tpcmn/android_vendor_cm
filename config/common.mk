@@ -81,6 +81,7 @@ PRODUCT_PACKAGES += \
 
 # Custom CM packages
 PRODUCT_PACKAGES += \
+    Trebuchet \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf
@@ -107,7 +108,7 @@ else
                 ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)
         else
             PRODUCT_PROPERTY_OVERRIDES += \
-                ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-BobZhome-$(shell date +%m%d%Y)
+                ro.cm.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-thekraven-$(shell date +%m%d%Y)
         endif
     endif
 endif
