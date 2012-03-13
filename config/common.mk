@@ -53,8 +53,12 @@ PRODUCT_COPY_FILES +=  \
     vendor/lge/thunderc/prebuild/media/bootanimation.zip:system/media/bootanimation.zip \
     vendor/lge/thunderc/prebuild/media/somebodys.ogg:system/media/audio/ringtones/somebodys.ogg
 
+<<<<<<< HEAD
 # Bring in camera effects & videos
 #$(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
+=======
+# Bring in camera effects
+>>>>>>> 70edbfa... Add common config for devices with low space on system
 PRODUCT_COPY_FILES +=  \
     vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
     vendor/cm/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
