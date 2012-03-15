@@ -11,10 +11,10 @@ endif
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Default ringtone
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=somebodys.ogg \
-    ro.config.notification_sound=Heaven.ogg \
-    ro.config.alarm_alert=Alarm_Beep_03.ogg
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.config.ringtone=somebodys.ogg \
+#    ro.config.notification_sound=Heaven.ogg \
+#    ro.config.alarm_alert=Alarm_Beep_03.ogg
 
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
@@ -51,14 +51,8 @@ PRODUCT_COPY_FILES +=  \
     vendor/cm/proprietary/Term.apk:system/app/Term.apk \
     vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm3.so:system/lib/libjackpal-androidterm3.so \
     vendor/lge/thunderc/prebuild/media/bootanimation.zip:system/media/bootanimation.zip \
-    vendor/lge/thunderc/prebuild/media/somebodys.ogg:system/media/audio/ringtones/somebodys.ogg
+#    vendor/lge/thunderc/prebuild/media/somebodys.ogg:system/media/audio/ringtones/somebodys.ogg
 
-<<<<<<< HEAD
-# Bring in camera effects & videos
-#$(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
-=======
-# Bring in camera effects
->>>>>>> 70edbfa... Add common config for devices with low space on system
 PRODUCT_COPY_FILES +=  \
     vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
     vendor/cm/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
@@ -113,8 +107,7 @@ else
         ifdef CM_RELEASE
             CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
         else
-            PRODUCT_PROPERTY_OVERRIDES += \
-                CM_VERSION=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-thekraven-$(shell date +%m%d%Y)
+            CM_VERSION=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-thekraven-$(shell date +%m%d%Y)
         endif
     endif
 endif
