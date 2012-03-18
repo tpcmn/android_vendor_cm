@@ -10,11 +10,6 @@ endif
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-# Default ringtone
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.config.ringtone=somebodys.ogg \
-#    ro.config.notification_sound=Heaven.ogg \
-#    ro.config.alarm_alert=Alarm_Beep_03.ogg
 
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
@@ -68,6 +63,7 @@ PRODUCT_COPY_FILES += \
 # Required CM packages
 PRODUCT_PACKAGES += \
     Camera \
+    Development \
     LatinIME \
     SpareParts \
     Superuser \
@@ -78,8 +74,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     VoiceDialer \
     SoundRecorder \
-    SpeechRecorder \
+    Development \
     Basic \
+    MagicSmokeWallpapers \
     LiveWallpapersPicker \
 
 # Custom CM packages
@@ -107,7 +104,7 @@ else
         ifdef CM_RELEASE
             CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
         else
-            CM_VERSION=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(PRODUCT_RELEASE_NAME)-thekraven-$(shell date +%m%d%Y)
+            CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)-kraven
         endif
     endif
 endif
