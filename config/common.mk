@@ -1,5 +1,10 @@
 PRODUCT_BRAND ?= cyanogenmod
 
+ifneq ($(TARGET_BOOTANIMATION_NAME),)
+    PRODUCT_COPY_FILES += \
+        vendor/cm/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
+endif
+
 ifdef CM_NIGHTLY
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=cyanogenmodnightly
@@ -44,9 +49,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES +=  \
     vendor/cm/proprietary/Term.apk:system/app/Term.apk \
-    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm3.so:system/lib/libjackpal-androidterm3.so \
-    vendor/lge/thunderc/prebuild/media/bootanimation.zip:system/media/bootanimation.zip \
-#    vendor/lge/thunderc/prebuild/media/somebodys.ogg:system/media/audio/ringtones/somebodys.ogg
+    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm3.so:system/lib/libjackpal-androidterm3.so
 
 PRODUCT_COPY_FILES +=  \
     vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
