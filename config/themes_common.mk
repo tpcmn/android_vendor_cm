@@ -1,4 +1,4 @@
-﻿# T-Mobile theme engine
+# T-Mobile theme engine
 PRODUCT_PACKAGES += \
        ThemeManager \
        ThemeChooser \
