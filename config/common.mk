@@ -72,8 +72,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/mkshrc:system/etc/mkshrc
 
-# T-Mobile theme engine 
-include vendor/cm/config/themes_common.mk 
+# T-Mobile theme engine
+include vendor/cm/config/themes_common.mk
 
 # Required CM packages
 PRODUCT_PACKAGES += \
@@ -106,7 +106,7 @@ PRODUCT_PACKAGES += \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
-   # CMWallpapers
+    Apollo
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
@@ -118,8 +118,6 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 PRODUCT_VERSION_MAJOR = 9
 PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE = 0-RC0
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=IMM76D
 
 ifdef CM_NIGHTLY
     CM_VERSION :=$(PRODUCT_VERSION_MAJOR)-$(shell date +%Y%m%d)-NIGHTLY-$(CM_BUILD)
