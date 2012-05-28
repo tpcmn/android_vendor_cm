@@ -1,0 +1,76 @@
+
+*** These modified files were found in JOE when it aborted on Wed May 23 04:15:09 2012
+*** JOE was aborted by UNIX signal 15
+
+*** File '.git/COMMIT_EDITMSG'
+
+*** These modified files were found in JOE when it aborted on Wed May 23 04:15:09 2012
+*** JOE was aborted by UNIX signal 15
+
+*** These modified files were found in JOE when it aborted on Wed May 23 04:15:09 2012
+*** JOE was aborted by UNIX signal 15
+Merge branch 'ics' of git://github.com/CyanogenMod/android_vendor_cm into ics
+
+Conflicts:
+	config/common.mk
+	config/permissions/com.tmobile.software.themes.xml
+	vendorsetup.sh
+#
+# It looks like you may be committing a MERGE.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+#
+fix merge
+*** File '(Unnamed)'
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch ics
+# Changes to be committed:
+#
+#	modified:   CHANGELOG.mkdn
+#	modified:   config/common.mk
+#	modified:   config/permissions/com.tmobile.software.themes.xml
+#	new file:   overlay/dictionaries/packages/inputmethods/LatinIME/java/res/raw-hu/main.dict
+#	new file:   prebuilt/common/bootanimation/vertical-800x1280.zip
+#	modified:   tools/squisher
+#	modified:   vendorsetup.sh
+#
+
+*** File '(Unnamed)'
+
+*** File '(Unnamed)'
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
