@@ -86,6 +86,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
+# CM-specific init file
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/bin/compcache:system/bin/compcache \
@@ -107,8 +110,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/mkshrc:system/etc/mkshrc
 
+# T-Mobile theme engine
+include vendor/cm/config/themes_common.mk
 # Required CM packages
 PRODUCT_PACKAGES += \
+    Development \
     LatinIME \
     SpareParts \
     Superuser \
@@ -116,14 +122,18 @@ PRODUCT_PACKAGES += \
 
 # Optional CM packages
 PRODUCT_PACKAGES += \
+    VoiceDialer \
+    SoundRecorder \
     Basic
 
 # Custom CM packages
 PRODUCT_PACKAGES += \
     Trebuchet \
     Camera \
+    DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
+    Apollo \
     CMFileManager
 
 # Extra tools in CM
@@ -174,7 +184,7 @@ else
     ifeq ($(PRODUCT_VERSION_MINOR),0)
         CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
     else
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
+        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-thekraven-LS670
     endif
 endif
 
