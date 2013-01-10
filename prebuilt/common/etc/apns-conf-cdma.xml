@@ -28,4 +28,7 @@
   <apn carrier="Boost MMS" mcc="505" mnc="02" apn="mms" user="" password="" server="" proxy="61.88.190.10" port="8070" mmsc="http://mmsc.optus.com.au:8002/" mmsproxy="61.88.190.10" mmsport="8070" type="mms" authtype="3"/>
   <apn carrier="Boost Mobile" mcc="505" mnc="02" apn="yesinternet" user="" password="" server="" proxy="" port="" mmsc="" mmsproxy="" mmsport="" type="default,supl" authtype="3"/>
   <apn carrier="Sprint" mcc="310" mnc="120" apn="Sprint" user="Sprint" server="*" password="*" mmsc="http://mms.sprintpcs.com" authtype="3"/>
+  <apn name="Production" numeric="00000" mcc="310" mnc="120" apn="Sprint" user="" server="" password="" proxy="" port="" mmsproxy="" mmsport="" mmsprotocol="2.0" mmsc="http://mms.plspictures.com" type="mms" />
+ <apn name="Android" numeric="310995" mcc="310" mnc="995" apn="internet" user="*" server="*" password="*" proxy="" port="" mmsproxy="" mmsport="" mmsprotocol="" mmsc="null" type="null" />
+ <apn name="TelKila" numeric="310260" mcc="310" mnc="260" apn="internet" user="*" server="*" password="*" proxy="" port="" mmsproxy="" mmsport="" mmsprotocol="" mmsc="null" type="null" /> 
 </apns>
