@@ -89,6 +89,7 @@ PRODUCT_COPY_FILES += \
 # CM-specific init file
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
+
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/bin/compcache:system/bin/compcache \
@@ -122,9 +123,8 @@ PRODUCT_PACKAGES += \
 
 # Optional CM packages
 PRODUCT_PACKAGES += \
-    VoiceDialer \
-    SoundRecorder \
-    Basic
+    Basic \
+    LiveWallpapersPicker
 
 # Custom CM packages
 PRODUCT_PACKAGES += \
@@ -143,8 +143,6 @@ PRODUCT_PACKAGES += \
     mke2fs \
     tune2fs \
     bash \
-    htop \
-    powertop \
     lsof
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
