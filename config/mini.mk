@@ -1,5 +1,3 @@
-$(call inherit-product, vendor/cm/config/tiny.mk)
-
 # Mini config (Required /system size: min=175MB)
 
 PRODUCT_PACKAGES += \
@@ -10,6 +8,10 @@ PRODUCT_PACKAGES += \
     Apollo \
     CMFileManager \
     Development \
+	Email2 \
+    Exchange2 \
     SoundRecorder \
     Basic \
     LockClock
+	
+$(call inherit-product, vendor/cm/config/tiny.mk)	
