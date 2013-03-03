@@ -69,6 +69,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Enable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
 
+# Default ringtone
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ringtone=Orion.ogg \
+    ro.config.notification_sound=Deneb.ogg \
+    ro.config.alarm_alert=Hassium.ogg
+
+# Bring in all audio files
+include frameworks/base/data/sounds/NewAudio.mk
+
+# Include CM audio files
+include vendor/cm/config/cm_audio.mk
+
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
     vendor/cm/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
@@ -132,6 +144,7 @@ PRODUCT_PACKAGES += \
     Camera \
     Development \
     LatinIME \
+    Mms \
     su
 
 # Optional CM packages
