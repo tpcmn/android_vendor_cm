@@ -150,7 +150,8 @@ PRODUCT_PACKAGES += \
     Apollo \
     CMUpdater \
     CMFileManager \
-    LockClock
+    LockClock \
+    HwaSettings
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
