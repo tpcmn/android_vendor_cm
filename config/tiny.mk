@@ -66,6 +66,22 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.com.android.dataroaming=false
 
+
+# Enable ADB authentication
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
+
+# Default ringtone
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ringtone=Orion.ogg \
+    ro.config.notification_sound=Deneb.ogg \
+    ro.config.alarm_alert=Hassium.ogg
+
+# Bring in all audio files
+include frameworks/base/data/sounds/NewAudio.mk
+
+# Include CM audio files
+include vendor/cm/config/cm_audio.mk
+
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
     vendor/cm/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
@@ -95,13 +111,25 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/bin/compcache:system/bin/compcache \
     vendor/cm/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
 
-# Nam configuration script
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/modelid_cfg.sh:system/bin/modelid_cfg.sh
+
+# Terminal Emulator
+PRODUCT_COPY_FILES +=  \
+    vendor/cm/proprietary/Term.apk:system/app/Term.apk \
+    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+
+# Bring in camera effects
+PRODUCT_COPY_FILES +=  \
+    vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
+    vendor/cm/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+
+
+# Enable wireless Xbox 360 controller support
+PRODUCT_COPY_FILES += \
+    frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl
 
 # This is CM!
 PRODUCT_COPY_FILES += \
@@ -113,28 +141,32 @@ PRODUCT_COPY_FILES += \
 
 # T-Mobile theme engine
 include vendor/cm/config/themes_common.mk
+
 # Required CM packages
 PRODUCT_PACKAGES += \
+    Camera \
     Development \
     LatinIME \
-    SpareParts \
-    Superuser \
+    Mms \
     su
 
 # Optional CM packages
 PRODUCT_PACKAGES += \
-    Basic \
-    LiveWallpapersPicker
+    VoiceDialer \
+    SoundRecorder \
+    Basic
 
 # Custom CM packages
 PRODUCT_PACKAGES += \
     Trebuchet \
-    Camera \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
     Apollo \
-    CMFileManager
+    CMUpdater \
+    CMFileManager \
+    LockClock \
+    HwaSettings
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
@@ -143,7 +175,25 @@ PRODUCT_PACKAGES += \
     mke2fs \
     tune2fs \
     bash \
+    vim \
+    nano \
+    htop \
+    powertop \
     lsof
+
+# Openssh
+PRODUCT_PACKAGES += \
+    scp \
+    sftp \
+    ssh \
+    sshd \
+    sshd_config \
+    ssh-keygen \
+    start-ssh
+
+# rsync
+PRODUCT_PACKAGES += \
+    rsync
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
@@ -182,7 +232,7 @@ else
     ifeq ($(PRODUCT_VERSION_MINOR),0)
         CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
     else
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-thekraven-LS670
+        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
     endif
 endif
 
@@ -190,13 +240,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION)
 
-include frameworks/base/data/sounds/OldAudio.mk
-
-# BT config
-PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
-
-# T-Mobile theme engine
-include vendor/cm/config/themes_common.mk
 
 -include $(WORKSPACE)/hudson/image-auto-bits.mk

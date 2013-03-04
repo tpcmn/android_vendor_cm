@@ -136,7 +136,6 @@ PRODUCT_PACKAGES += \
     Camera \
     Development \
     LatinIME \
-    Superuser \
     su
 
 # Optional CM packages
