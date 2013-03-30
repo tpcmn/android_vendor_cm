@@ -240,5 +240,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION)
 
+# BT config
+PRODUCT_COPY_FILES += \
+    system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
+
+# T-Mobile theme engine
+include vendor/cm/config/themes_common.mk
 
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
